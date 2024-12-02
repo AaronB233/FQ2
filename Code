@@ -1,0 +1,195 @@
+Collectible item:
+
+using UnityEngine;
+
+public class CollectibleItem : MonoBehaviour
+{
+    // Reference to the Canvas script for the collectible counter
+    public CollectiblesManager collectiblesManager;
+
+    // Reference to the AudioClip to be played when the item is collected
+    public AudioClip collectSound;
+
+    // Optional: Reference to the AudioSource component
+    public AudioSource audioSource;
+
+    // When the player enters the trigger zone (collider with trigger enabled)
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the object entering the trigger zone is the player
+        if (other.CompareTag("Player"))
+        {
+            // Increment the collectible counter in the Canvas
+            collectiblesManager.IncreaseCollectibleCount();
+
+            // Play the collection sound immediately
+            if (audioSource != null)
+            {
+                // If the AudioSource is assigned, play the sound through it
+                audioSource.PlayOneShot(collectSound);
+            }
+            else
+            {
+                // If no AudioSource is assigned, play the sound at the collectible's position
+                AudioSource.PlayClipAtPoint(collectSound, transform.position);
+            }
+
+            // Destroy this object immediately after collection (no delay)
+            Destroy(gameObject);
+        }
+    }
+}
+
+
+Collectibles Manager:
+
+using UnityEngine;
+using TMPro;
+
+public class CollectiblesManager : MonoBehaviour
+{
+    public TextMeshProUGUI collectiblesText;   // Text showing the crystal count
+    public GameObject victoryPanel;            // Panel showing the victory message
+
+    public int totalCollectibles = 7;          // Total crystals required to win
+
+    // Audio references
+    public AudioSource backgroundMusic;
+    public AudioSource windSound;
+    public AudioClip victorySound;             // Victory audio clip
+
+    private AudioSource audioSource;           // Internal audio source to play the victory sound
+    private int collectibleCount = 0;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Ensure victory panel is hidden and collectibles text is shown
+        collectiblesText.gameObject.SetActive(true);
+        victoryPanel.SetActive(false);
+
+        // Create or assign an AudioSource to play the victory sound
+        audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Set the initial text to "Crystals: 0 / Total"
+        collectiblesText.text = "Crystals: 0 / " + totalCollectibles;
+    }
+
+    // This function is called when a crystal is collected
+    public void IncreaseCollectibleCount()
+    {
+        collectibleCount++;
+        collectiblesText.text = "Crystals: " + collectibleCount.ToString() + " / " + totalCollectibles;
+
+        // Check if all crystals are collected
+        if (collectibleCount == totalCollectibles)
+        {
+            PlayerWins();
+        }
+    }
+
+    private void PlayerWins()
+    {
+        // Stop the background music and wind sound
+        if (backgroundMusic != null) backgroundMusic.Stop();
+        if (windSound != null) windSound.Stop();
+
+        // Play the victory sound if assigned
+        if (victorySound != null)
+        {
+            audioSource.clip = victorySound;
+            audioSource.Play();
+        }
+
+        // Hide the crystals UI and show the victory message
+        collectiblesText.gameObject.SetActive(false); // Hide crystals UI
+        victoryPanel.SetActive(true); // Show victory message panel
+
+        // Unlock cursor and make it visible
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Pause the game (optional)
+        Time.timeScale = 0f;
+    }
+}
+
+
+
+
+
+Menu Manager:
+
+using UnityEngine;
+
+public class MenuManager : MonoBehaviour
+{
+    public GameObject mainMenuCanvas;        // The main menu UI
+    public GameObject gameUICanvas;         // The game UI (collectibles UI, etc.)
+    public GameObject firstPersonCharacter; // The player's first-person controller
+    public GameObject backstoryPanel;       // The panel for the backstory
+
+    // Called when the "Start Game" button is clicked
+    public void StartGame()
+    {
+        mainMenuCanvas.SetActive(false);       // Hide the main menu
+        gameUICanvas.SetActive(true);          // Show the game UI
+        firstPersonCharacter.SetActive(true);  // Enable the player
+    }
+
+    // Called when the "Backstory" button is clicked
+    public void ShowBackstory()
+    {
+        mainMenuCanvas.SetActive(false);       // Hide the main menu
+        backstoryPanel.SetActive(true);        // Show the backstory panel
+    }
+
+    // Called when the "Close" button on the backstory panel is clicked
+    public void CloseBackstory()
+    {
+        backstoryPanel.SetActive(false);       // Hide the backstory panel
+        mainMenuCanvas.SetActive(true);        // Show the main menu again
+    }
+}
+
+
+
+Intro Panel Manager:
+
+using UnityEngine;
+
+public class IntroPanelManager : MonoBehaviour
+{
+    public GameObject mainMenuPanel; // Reference to the menu UI panel
+    public GameObject menuCamera; // Reference to the menu camera
+    public GameObject firstPersonPlayer; // Reference to the First Person Player
+    public GameObject collectiblesUICanvas; // Reference to the Collectibles UI Canvas
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Enable the menu panel and menu camera, disable the player and collectibles UI
+        mainMenuPanel.SetActive(true);
+        menuCamera.SetActive(true);
+        firstPersonPlayer.SetActive(false);
+        collectiblesUICanvas.SetActive(false); // Make sure the collectibles UI is hidden initially
+    }
+
+    // Called when "Start Game" is pressed
+    public void StartGame()
+    {
+        // Disable the menu panel and menu camera
+        mainMenuPanel.SetActive(false);
+        menuCamera.SetActive(false);
+
+        // Enable the player
+        firstPersonPlayer.SetActive(true);
+
+        // Enable the collectibles UI
+        collectiblesUICanvas.SetActive(true); // Now the collectibles UI is shown after the game starts
+
+        // Lock the cursor for gameplay
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+}
