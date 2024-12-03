@@ -1,4 +1,4 @@
-Collectible item:
+1.  Collectible item:
 
 using UnityEngine;
 
@@ -41,7 +41,7 @@ public class CollectibleItem : MonoBehaviour
 }
 
 
-Collectibles Manager:
+2.  Collectibles Manager:
 
 using UnityEngine;
 using TMPro;
@@ -118,43 +118,7 @@ public class CollectiblesManager : MonoBehaviour
 
 
 
-Menu Manager:
-
-using UnityEngine;
-
-public class MenuManager : MonoBehaviour
-{
-    public GameObject mainMenuCanvas;        // The main menu UI
-    public GameObject gameUICanvas;         // The game UI (collectibles UI, etc.)
-    public GameObject firstPersonCharacter; // The player's first-person controller
-    public GameObject backstoryPanel;       // The panel for the backstory
-
-    // Called when the "Start Game" button is clicked
-    public void StartGame()
-    {
-        mainMenuCanvas.SetActive(false);       // Hide the main menu
-        gameUICanvas.SetActive(true);          // Show the game UI
-        firstPersonCharacter.SetActive(true);  // Enable the player
-    }
-
-    // Called when the "Backstory" button is clicked
-    public void ShowBackstory()
-    {
-        mainMenuCanvas.SetActive(false);       // Hide the main menu
-        backstoryPanel.SetActive(true);        // Show the backstory panel
-    }
-
-    // Called when the "Close" button on the backstory panel is clicked
-    public void CloseBackstory()
-    {
-        backstoryPanel.SetActive(false);       // Hide the backstory panel
-        mainMenuCanvas.SetActive(true);        // Show the main menu again
-    }
-}
-
-
-
-Intro Panel Manager:
+3.  Intro Panel Manager:
 
 using UnityEngine;
 
