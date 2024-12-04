@@ -1,3 +1,13 @@
+Provide me with a collectible item script for my 3D Unity game.  When the player touches the item, It should increase the collectible count in another script (CollectiblesManager) then play a sound and disappear.  
+
+Provide me with a Unity script for managing collectible items.  It should display the number of collectible items (crystals) found out of 7, starting at 0 using text mesh pro.  Then when 7 collectibles are found, the background music plus the wind audio should stop and then trigger a victory panel with different audio.  The game should also pause.
+
+Write a script for my 3D unity game for managing an intro panel.  The intro panel manager should reference the main menu panel and menu camera which will initially be active.  Reference the first person player and the collectibles UI canvas which will only display when the start game button is clicked and ensure the menu panel and camera is not displaying when the start button is clicked.
+
+
+
+
+
 1.  Collectible item:
 
 using UnityEngine;
