@@ -1,0 +1,145 @@
+<!doctype html>
+<!-- Declaring default document language -->
+<html lang="en">
+
+<!-- Header section -->
+<head>
+<title>Event Platform</title>
+<!-- Bootstrap CSS -->
+
+
+   <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
+   <link href="{{ url_for('static', filename='css/template.css') }}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/0b63358008.js" crossorigin="anonymous"></script>
+
+    <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="title" content="Event Platform">
+  <meta name="description" content="Events">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Aaron Bruce">
+
+</head>
+
+        <!-- Start of body section -->
+<body>
+        <!-- Start of header section -->
+<header>
+        <!-- Container -->
+    <div class="container-fluid">
+            <!-- Row -->
+        <div class="row">
+            <div class="col-sm-12 col-md-2 d-flex justify-content-center align-items-center">
+                    <!-- Logo -->
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/pexels-photo-596134.webp') }}" alt="Logo" class="img-fluid"></a>
+            </div>
+            <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center mx-auto">
+                <div id="portfolio" class="text-center w-100">
+                    <h1>{% block pagetitle %}Talent Sphere{% endblock %}</h1>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-2"></div>
+        </div>
+    </div>
+</header>
+
+
+
+
+                <!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg">
+        <!-- Title links to index page -->
+  <a class="navbar-brand" href="{{ url_for('index') }}">Talent Sphere</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+            <!-- Index page-->
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+      </li>
+            <!-- Music page-->
+            <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('music') }}">Music</a>
+      </li>
+            <!-- All events page-->
+            <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('comedy') }}">Comedy</a>
+      </li>
+          <!-- Local page-->
+            <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('local') }}">Local</a>
+      </li>
+          <!-- Login page-->
+              <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+      </li>
+          <!-- Register page-->
+              <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+      </li>
+
+        {% if session.get('user') %}
+              <li class="nav-item">
+        <form action="{{ url_for('logout') }}" method="POST">
+            <button type="submit" class="btn btn-danger btn-logout">Logout</button>
+        </form>
+        {% endif %}
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+                {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+        <div class="alert alert-info">{{ message|safe }}</div>
+                {% endfor %}
+            {% endif %}
+         {% endwith %}
+        {% block content %}{% endblock %}
+
+      <!-- Beginning of footer containing social media links and copyright statement -->
+<footer class="text-center text-white" style="background-color: #7A7A7A;">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="socialbtn" href="https://en-gb.facebook.com/" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="socialbtn" href="https://twitter.com/home?lang=en-gb" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="socialbtn" href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="socialbtn" href="https://www.instagram.com/" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2024 Copyright:
+    <a class="text-white" href="{{ url_for('index') }}">Talent Sphere</a>
+  </div>
+
+</footer>
+ <script src="{{ url_for('static', filename='/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

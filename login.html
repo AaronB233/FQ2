@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <div class="wrapper">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+     <h2 class="fw-bold mb-5">Log in</h2>
+      <form method="POST"> <!-- Email input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="email">Email address</label>
+          <input type="email" id="email" class="form-control" name="email" required />
+        </div> <!-- Password input -->
+
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" class="form-control" name="password" required />
+        </div>
+        <!-- Submit button -->
+      <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4"> Log in
+        </button>
+      </form>
+    </div>
+  </div>
+        </div>
+</section>
+{% endblock %}
