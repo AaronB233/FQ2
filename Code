@@ -1,3 +1,26 @@
+  DROP TABLE IF EXISTS users;
+  CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  firstname TEXT NOT NULL,
+  lastname TEXT NOT NULL,
+  email TEXT NOT NULL,
+  password TEXT NOT NULL
+  );
+
+  DROP TABLE IF EXISTS events;
+  CREATE TABLE events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  event_name TEXT NOT NULL,
+  event_date TEXT NOT NULL,
+  event_time TEXT NOT NULL,
+  description TEXT NOT NULL,
+  location TEXT NOT NULL,
+  city TEXT NOT NULL,
+  price TEXT NOT NULL,
+  graphic TEXT NOT NULL,
+  category TEXT NOT NULL
+  );
+
 INSERT INTO events (event_name, event_date, event_time, description, location, city, price, graphic, category) VALUES
 ('Alanis Morissette', '12/11/2025', '20:30', 'Born in Ottawa, Morissette had been a musician since a young age, joining Canadian kids show You Can’t Do That On Television in the 80s and releasing her debut single aged 10. Two albums followed in 1991 and 1992, both of which were popular in her homeland but struggled abroad.  That changed in 1994 when Morissette moved to LA and met producer and songwriter Glen Ballard. The two forged a solid partnership and steered Morissette away from the pop of her first two albums and towards a sound that married the angst, grit and confessionalism of alt-rock with giant pop hooks. Off the back of single You Oughta Know, Morissette was already a star by the time Jagged Little Pill hit record shelves in 1995.', 'SEC armadillo, Glasgow', 'Glasgow', '50', 'images/alanis.png', 'music'),
 ('Clairo', '20/11/2025', '19:00', 'The singer-songwriter announces UK shows for 2025 American indie luminary Clairo has spearheaded new pop conventions and upended them all the same.  Her soft rock intimations, interwoven with tendrils of 70s soul and lush R&B, have spellbound listeners of all ages, and landed her on the stages of Coachella, the Newport Folk Festival and The Tonight Show Starring Jimmy Fallon. Born Claire Cottrill in Atlanta, GA, the artist began self-recording songs and music videos at the age of 13, which amassed a huge fanbase on YouTube. Released in 2017, her lo-fi pop confessional Pretty Girl went viral, earning her a joint record deal with Fader Label.', 'SSE Hydro, Glasgow', 'Glasgow', '45', 'images/clairo.jpg', 'music'),
@@ -21,6 +44,24 @@ INSERT INTO events (event_name, event_date, event_time, description, location, c
 ('Maisie Adam', '15/12/2025', '21:00', 'Fresh from Live At The Apollo, A League Of Their Own and Have I Got News For You, Maisie Adam is heading back out on tour with a brand new show.  She’s five years into her job as a comedian now, so she’s due an appraisal. Join her for the ultimate performance review – where you’ll either see just why she was awarded Best New Act and nominated for Best Newcomer, or you’ll see someone who’s ready for and ‘organisational restructure’.  See you at the appraisal, she looks forward to seeing you, kindest regards.', 'OVO Hydro, Glasgow', 'Glasgow', '40', 'images/maisie.jpg', 'comedy'),
 ('Aurie Styla', '03/09/2025', '18:00', 'After a year of performing worldwide, award-winning comedian Aurie Styla is back on tour, with his biggest one to date. Join him as he talks about this wild world, and his journey to make sense of it, in The Aurator!  As seen on Deep Fake Neighbour Wars (ITVX), Comedy Central Live, Jonathan Ross’ Comedy Club (ITV), Life’s A Pitch (Sky), Don’t Hate The Playaz (ITV), The Stand-Up Sketch Show (ITV2), Mo Gilligan’s Black British & Funny (C4) & more.  ‘Natural warmth to his presence that’s intoxicating’ – Chortle Smart, slick, talented and funny – British Comedy Guide', 'The Playhouse, Edinburgh', 'Edinburgh', '35', 'images/aurie.jpg', 'comedy');
 
+
+  DROP TABLE IF EXISTS local;
+  CREATE TABLE local (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  bio TEXT NOT NULL,
+  email TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  socialmedia NOT NULL
+  );
+
+  INSERT INTO local (name, bio, email, phone, socialmedia) VALUES
+    ('Jack Campbell', 'I am a singer and songwriter from Edinburgh with a passion for music.  I would like to play at gigs anywhere around the city, please get in touch if you would like me to send any of my songs or book me for a gig.', 'jackcampbell321@gmail.com', '07976398473', 'https://en-gb.facebook.com/'),
+    ('Callum Frazer', 'My name is Callum, I am an up and coming comedian from Aberdeen who loves a good laugh.  My comedy is a mix of random banter and everyday life, I manage to find the funny side of most things in life.  I look forward to hearing from you.', 'callumfraser3@gmail.co.uk', '07730925638', 'https://en-gb.facebook.com/'),
+    ('Emily McKenzie', 'Hi, I am Emily, a folk singer from Inverness.  My music is inspired from real life stories.  I love creating songs, please send me an email fo find out more.', 'emilyfolkartist@icloud.com', '07828497624', 'https://www.instagram.com/'),
+    ('Jamie Anthony', 'Hiya, I am Jamie, fresh on the Edinburgh comedy scene.  I enjoy making folk laugh with life stories and wit.  I am just starting out but if you are up for a laugh, I am your guy.', 'laughjkenny@hotmail.co.uk', '07990826567', 'https://www.instagram.com/'),
+    ('Jade Robertson', 'I see my voice as my instrument and I love creating different styles of music.  Whether it is a small local gig or just playing for a few friends, I will make sure it is one to remember.', 'roberstonmusic@mail.co.uk', '07961214276', 'https://www.instagram.com/'),
+    ('The Rock Crew', 'We are a rock band based in Glasgow, fresh on the scene but never fail to bring the energy.  We are all willing to travel to other towns or cities to perform so do not hesitate to reach out!', 'therockcrew@hotmail.co.uk', '07123189567', 'https://en-gb.facebook.com/');
 
 
 
