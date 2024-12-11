@@ -4,13 +4,13 @@
     <div class="d-flex row justify-content-center align-items-center">
             <div class="card event-card" style="width: 70%; height: 80vh;">
                 <div class="card-body event-card-body">
-                    <h5 class="card-title">{{ event[1] }}</h5>
+                    <h3 class="card-title">{{ event[1] }}</h3>
                     <p class="card-text description">{{ event[4] }}</p>
                     <div class="row-group">
-                    <p class="card-text">{{ event[2] }}</p>
-                    <p class="card-text time-right">{{ event[3] }}</p>
-                    <p class="card-text">{{ event[5] }}</p>
-                        </div>
+                        <p class="card-text" style="font-weight: bold;">{{ event[2] }}</p>
+                        <p class="card-text time-right" style="font-weight: bold;">{{ event[3] }}</p>
+                        <p class="card-text" style="font-weight: bold;">{{ event[5] }}</p>
+                    </div>
                     <div class="price-button-group">
                     <span class="price-text">£ {{ event[7] }}</span>
 

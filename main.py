@@ -121,7 +121,7 @@ def purchase(event_id):
 
     firstname = session["user"].get("firstname")
     email = session["user"].get("email")
-    flash(f"Thankyou, {firstname}!  Your ticket has been successfully purchased.")
+    flash(f"Thank you, {firstname}!  Your ticket has been successfully purchased.")
 
     return render_template("ticket.html", event=event, firstname=firstname, email=email)
 

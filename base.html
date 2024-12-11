@@ -31,11 +31,11 @@
         <div class="row">
             <div class="col-sm-12 col-md-2 d-flex justify-content-center align-items-center">
                     <!-- Logo -->
-                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/pexels-photo-596134.webp') }}" alt="Logo" class="img-fluid"></a>
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="img-fluid"></a>
             </div>
             <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center mx-auto">
                 <div id="portfolio" class="text-center w-100">
-                    <h1>{% block pagetitle %}Talent Sphere{% endblock %}</h1>
+                    <h1 class="pagetitle">{% block pagetitle %}Talent Sphere{% endblock %}</h1>
                 </div>
             </div>
             <div class="col-sm-12 col-md-2"></div>
@@ -55,7 +55,7 @@
 </button>
 
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mx-auto w-100 justify-content-between">
             <!-- Index page-->
       <li class="nav-item active">
         <a class="nav-link" href="{{ url_for('index') }}">Home</a>
@@ -64,7 +64,7 @@
             <li class="nav-item">
         <a class="nav-link" href="{{ url_for('music') }}">Music</a>
       </li>
-            <!-- All events page-->
+            <!-- Comedy page-->
             <li class="nav-item">
         <a class="nav-link" href="{{ url_for('comedy') }}">Comedy</a>
       </li>
@@ -103,30 +103,22 @@
         {% block content %}{% endblock %}
 
       <!-- Beginning of footer containing social media links and copyright statement -->
-<footer class="text-center text-white" style="background-color: #7A7A7A;">
+<footer class="text-center text-white mt-auto" style="background-color: #5CB7E0;">
   <!-- Grid container -->
   <div class="container p-4 pb-0">
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->
-      <a class="socialbtn" href="https://en-gb.facebook.com/" role="button"
-        ><i class="fab fa-facebook-f"></i
-      ></a>
+      <a class="socialbtn" href="https://en-gb.facebook.com/" role="button"><i class="fab fa-facebook-f"></i></a>
 
       <!-- Twitter -->
-      <a class="socialbtn" href="https://twitter.com/home?lang=en-gb" role="button"
-        ><i class="fab fa-twitter"></i
-      ></a>
+      <a class="socialbtn" href="https://twitter.com/home?lang=en-gb" role="button"><i class="fab fa-twitter"></i></a>
 
       <!-- Google -->
-      <a class="socialbtn" href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin" role="button"
-        ><i class="fab fa-google"></i
-      ></a>
+      <a class="socialbtn" href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin" role="button"><i class="fab fa-google"></i></a>
 
       <!-- Instagram -->
-      <a class="socialbtn" href="https://www.instagram.com/" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
+      <a class="socialbtn" href="https://www.instagram.com/" role="button"><i class="fab fa-instagram"></i></a>
 
     </section>
     <!-- Section: Social media -->
